@@ -1,23 +1,14 @@
-language: php
+dist: trusty
 
-sudo: false
-
-php:
-  - 5.6
-  - 7.0
-
-before_script:
-  - composer install --prefer-source
 addons:
   sonarcloud:
-    organization: "samiachayeb"
+    organization: "sanogotech"
     token:
-      secure: "5620efd93d4938aa61c8343af0339153d3f817de" # encrypted value of your token
+      secure: "6fb23963c7d0a6c8f22df225d36a45a3f9c6d6ae" # encrypted value of your token
 
-script: ./vendor/bin/phpunit --colors tests
-- sonar-scanner
+install: composer install --prefer-dist
 
-cache:
-    directories:
-        - vendor
-
+script:
+  # the following command line builds the project, runs the tests with coverage and then execute the SonarCloud analysis
+  - vendor/bin/phpunit  --coverage-clover=coverage-report.clover --log-junit=test-report.xml
+  - sonar-scanner
