@@ -4,7 +4,7 @@ addons:
   sonarcloud:
     organization: "samiachayeb"
     token:
-      secure: "5620efd93d4938aa61c8343af0339153d3f817de" # encrypted value of your token
+      secure: "3fe73e2962b71473bada22abfd629d7c4f853f30" # encrypted value of your token
 
 install: composer install --prefer-dist
 
